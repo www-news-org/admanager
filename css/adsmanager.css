@@ -1,0 +1,161 @@
+@charset "UTF-8";
+/*모든 요소에 기본값 설정*/
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+/*child가 float인 경우 parent의 영역을 잡아주기*/
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+  height: 0;
+}
+
+/*밑에 child들에 %를 활용하기 위해서 브라우저 크기로 맞춤*/
+html, body {
+  height: 100%;
+}
+
+/*header 영역*/
+/*header fixed된, 보이는 부분*/
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 44px;
+  background-color: #505867;
+  /*header 위의 element들 감싸는 wrapper*/
+}
+
+.header > .header-wrapper {
+  width: 100%;
+  height: 100%;
+}
+
+/*header block 영역 차지용*/
+.header-block {
+  height: 44px;
+}
+
+/*content 영역*/
+.content {
+  width: 100%;
+  height: calc(100% - (44px + 30px));
+  /*campaign 영역*/
+}
+
+.content > .campaign {
+  width: 100%;
+  height: 100%;
+  /*campaign header 영역*/
+  /*fixed됨 scroll-bar가 나타나는 오른쪽 끝 세로로 긴 박스 영역*/
+  /*fixed됨 campaign-slide를 펼칠 수 있는 button들이 존재하는 박스 영역*/
+  /*campaign manage 영역 - scroll down data가 담김*/
+}
+
+.content > .campaign > .campaign-header-block {
+  /*campaign-header-1, fixed된 보이는 부분*/
+}
+
+.content > .campaign > .campaign-header-block > .campaign-account-header {
+  position: fixed;
+  top: 43.5px;
+  width: calc(100% - 12px);
+  height: 160px;
+}
+
+.content > .campaign > .campaign-header-block > .campaign-account-header > .campaign-account-cta {
+  width: 100%;
+  height: 44px;
+  background: #fff;
+  border-bottom: solid 1px #dadcde;
+}
+
+.content > .campaign > .campaign-header-block > .campaign-account-header > .campaign-account-info {
+  width: 100%;
+  height: 65px;
+  background: #fff;
+}
+
+.content > .campaign > .campaign-header-block > .campaign-account-header > .campaign-account-menu {
+  width: 100%;
+  height: 52px;
+  background: #e4e5e6;
+}
+
+.content > .campaign > .campaign-scroll-bg {
+  position: fixed;
+  z-index: -1;
+  /*스크롤 바 보이게 하기 위해서 한차원 아래로 또는 opacity로!*/
+  right: 0px;
+  width: 12px;
+  height: calc(100% - (30px + 43px));
+  /*전체 container의 크기에서 header, footer의 height 제거*/
+  background: #e4e5e6;
+}
+
+.content > .campaign > .campaign-scroll-bg > .campaign-scroll-bg-1 {
+  background: white;
+  height: 44px;
+  border-bottom: 1px solid #dadcde;
+}
+
+.content > .campaign > .campaign-scroll-bg > .campaign-scroll-bg-2 {
+  background: white;
+  height: 65px;
+  border-bottom: 1px solid #dadcde;
+}
+
+.content > .campaign > .campaign-scroll-bg > .campaign-scroll-bg-1 {
+  background: white;
+  height: 44px;
+  border-bottom: 1px solid #dadcde;
+}
+
+.content > .campaign > .campaign-slide-bg {
+  position: fixed;
+  top: 204px;
+  /*45 + 44 + 65 + 52 -fixed위 모든 height합 빼준 것*/
+  right: 12px;
+  /*campaign-scroll-bg만큼 오른쪽에서 이동*/
+  width: 44px;
+  height: calc(100% - (44px + 65px + 52px + 44px + 30px));
+  background-color: #394959;
+  box-shadow: -2px 2px 4px -1px rgba(0, 0, 0, 0.25);
+}
+
+.content > .campaign > .campaign-manage {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  /*컨텐츠가 넘어가지 않으면, 스크롤 생성 X, 넘어가면 스크롤 생성*/
+  /*campaign-manage-wrapper 영역 - 우측 scroll down bar를 제외한 영역 */
+}
+
+.content > .campaign > .campaign-manage > .campaign-manage-wrapper {
+  width: calc(100% - (12px + 44px));
+  /*우측 scroll down bar + scroll slide bg를 제외한 영역 */
+  /* campaign-manage-wrapper 쪽에서 위에 차지하는 default 영역*/
+}
+
+.content > .campaign > .campaign-manage > .campaign-manage-wrapper > .campaign-manage-inner-top-block {
+  width: 100%;
+  height: calc(44px + 65px + 52px);
+}
+
+/*footer 영역*/
+.footer {
+  z-index: 1;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 30px;
+  background-color: #f2f5f6;
+}
+
+.footer-block {
+  height: 30px;
+}
